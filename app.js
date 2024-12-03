@@ -7,23 +7,22 @@ console.log(sum(7, 3))
 
 // Export the function to be used on other files 
 // (similar to the keyword "export" when using webpack)
-
+let oneEuroIs = {
+    "JPY": 156.5, // Japan yen
+    "USD": 1.07, // US dollar
+    "GBP": 0.87, // British pound
+};
 
 const fromEuroToDollar = function(valueInEuro) {
-    // Convert the given valueInEuro to dollars
-    let valueInDollar = valueInEuro * 1.07;
-    // return the dollar value
-    return valueInDollar;
+    return valueInEuro * oneEuroIs["USD"];
 }
 
 const fromDollarToYen = function(valueInDollar) {
-    let valueInYen = valueInDollar * 156.5;
-    return valueInYen;
+    return Math.floor((valueInDollar / oneEuroIs["USD"]) * oneEuroIs["JPY"]);
 }
 
 const fromYenToPound = function(valueInYen) {
-    let valueInPound = valueInYen * 0.87;
-    return valueInPound;
+    return Math.floor((valueInYen / oneEuroIs["JPY"]) * oneEuroIs["GBP"]);
 }
 
 
